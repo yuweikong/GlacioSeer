@@ -8,7 +8,7 @@ GlacioSeer is a data-driven framework for direct, lead-time-conditioned forecast
 
 ## Model architecture
 
-![Architecture of GlacioSeer-AO](figures/glacioseer_ao_architecture.png)
+![Architecture of GlacioSeer-AO](glacioseer_ao_architecture.png)
 
 *Architecture of GlacioSeer-AO. The model combines the SIC forecasting backbone with separately encoded ERA5 atmospheric and ORAS5 oceanic histories. The diagram is also available as a [PDF figure](figures/glacioseer_ao_architecture.pdf).*
 
