@@ -2,7 +2,7 @@
 
 **Lead-Time-Conditioned Seasonal Forecasting of Pan-Arctic Sea Ice Concentration With Atmospheric and Oceanic Histories**
 
-> **Code release:** The GlacioSeer source code will be made publicly available at [github.com/yuweikong/GlacioSeer](https://github.com/yuweikong/GlacioSeer) upon acceptance of the manuscript. This page describes the model and its reported evaluation; executable code and run instructions will be added with the release.
+> **Code release:** The GlacioSeer source code will be made publicly available at [github.com/yuweikong/GlacioSeer](https://github.com/yuweikong/GlacioSeer) upon acceptance of the manuscript. 
 
 GlacioSeer is a data-driven framework for direct, lead-time-conditioned forecasts of monthly mean pan-Arctic sea-ice concentration (SIC), with forecast leads of one to six months.
 
