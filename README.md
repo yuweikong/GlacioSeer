@@ -39,14 +39,14 @@ SIPN South (Sea Ice Prediction Network – South) collects annual forecasts of t
 
 *February sea-ice area error against the verifying analysis. Each row is one season; grey dots are individual SIPN South submissions, the dashed line is the SIPN climatology and the numbers on the right are the ranks of the two GlacioSeer products among the entries of that season. The horizontal axis is logarithmic.*
 
-GlacioSeer-SIC ranks second, fourth, first, second and third of 16–22 entries, with an absolute error of 0.015–0.272 × 10<sup>6</sup> km<sup>2</sup>. In 2024 it is the closest entry of the panel, ahead of every dynamical and statistical submission, and its error is comparable to the 0.014 × 10<sup>6</sup> km<sup>2</sup> that separates the two verification products. Its February error is 3 to 33 times smaller than the SIPN climatology in every season. The recursive variant trails it by 0.047 × 10<sup>6</sup> km<sup>2</sup> on average and is the better of the two in 2023.
+GlacioSeer-SIC ranks second, fourth, first, second and third of 16–22 entries, with an absolute error of 0.015–0.272 × 10⁶ km². In 2024 it is the closest entry of the panel, ahead of every dynamical and statistical submission, and its error is comparable to the 0.014 × 10⁶ km² that separates the two verification products. Its February error is 3 to 33 times smaller than the SIPN climatology in every season. The recursive variant trails it by 0.047 × 10⁶ km² on average and is the better of the two in 2023.
 
 <details>
 <summary>Full ranking of every submission, season by season</summary>
 
 ![February SIA error, 2023-2026](figures/sipn_south/feb_sia_ranking_2023_2026.png)
 
-*Every forecast entry of the four most recent seasons, ordered by error. Beyond 1.0 × 10<sup>6</sup> km<sup>2</sup> the axis is compressed so that the long tail cannot flatten the rest of the panel, and the dotted line marks the largest error among the verification products. Those two products sit below the rule because they are reference analyses, not forecasts. The 2022 season is included in the figure above and in [`data/sipn_south_feb_sia_ranking.csv`](data/sipn_south_feb_sia_ranking.csv); vector versions of every panel are in [`figures/sipn_south/`](figures/sipn_south).*
+*Every forecast entry of the four most recent seasons, ordered by error. Beyond 1.0 × 10⁶ km² the axis is compressed so that the long tail cannot flatten the rest of the panel, and the dotted line marks the largest error among the verification products. Those two products sit below the rule because they are reference analyses, not forecasts. The 2022 season is included in the figure above and in [`data/sipn_south_feb_sia_ranking.csv`](data/sipn_south_feb_sia_ranking.csv); vector versions are in [`figures/sipn_south/`](figures/sipn_south).*
 
 </details>
 

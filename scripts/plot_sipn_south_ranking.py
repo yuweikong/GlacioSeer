@@ -1,29 +1,31 @@
-"""February SIA error ranking for the SIPN South hindcast benchmark (2022-2026).
+"""SIPN South hindcast benchmark figures.
 
-Reads ``data/sipn_south_feb_sia_ranking.csv`` and draws a 2 x 3 figure:
+Reads ``data/sipn_south_feb_sia_ranking.csv`` and writes two figures:
 
-* five season panels of |February SIA error| against every external SIPN South
-  submission of that season;
-* a summary panel: the spread of all SIPN submissions per season, the two GlacioSeer
-  products, the SIPN climatology and the rank of both products.
+* ``sipn_south_benchmark`` -- one row per season: the whole field of external
+  submissions, the two GlacioSeer products, the SIPN climatology, and the rank of each
+  product shown beside its season;
+* ``feb_sia_ranking_2023_2026`` -- every forecast entry of the four most recent seasons,
+  ordered by error on a shared axis whose right end is compressed so the long tail
+  cannot flatten the rest of the panel. Verification products sit below a rule, because
+  they are reference analyses rather than forecast entries.
 
-Verification products (NSIDC / OSI) are drawn in near-black in the season panels, and a
-dotted line marks the largest error among them, i.e. the spread between observational
-products.
+``--all`` additionally writes the per-season panels and the five-season grid, which the
+README does not use.
 
-Typography follows journal conventions: Arial throughout, one type scale
-(title 12.5 / panel 9.5 / axis and ticks 7.0 / legend 7.4 pt), thin axes without top or
-right spines, and no explanatory notes inside the figure.
+Typography follows journal conventions: Arial throughout, one type scale, thin axes,
+and no explanatory notes inside the figures.
 
 Usage
 -----
-    python scripts/plot_sipn_south_ranking.py
+    python scripts/plot_sipn_south_ranking.py [--all]
 
 Outputs go to ``figures/sipn_south/``.
 """
 
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 
 import matplotlib as mpl
@@ -455,13 +457,20 @@ def draw_composite(df: pd.DataFrame, out: Path) -> None:
 
 
 def main() -> None:
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--all", action="store_true",
+                    help="also write the per-season panels and the five-season grid, "
+                         "which are not used by the README")
+    args = ap.parse_args()
+
     OUT.mkdir(parents=True, exist_ok=True)
     df = load()
-    for year in YEARS:
-        draw_individual(df, year, OUT)
-    draw_composite(df, OUT)
     draw_hero(df, OUT)
     draw_ranking_grid(df, OUT)
+    if args.all:
+        for year in YEARS:
+            draw_individual(df, year, OUT)
+        draw_composite(df, OUT)
 
     for year in YEARS:
         rows = df[df.target_year == year]
