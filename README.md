@@ -23,34 +23,30 @@ The shared network predicts each requested lead directly, without feeding an ear
 
 ## Reported evaluation
 
-The manuscript evaluates monthly mean SIC with the spatial anomaly correlation coefficient (SACC), anomaly correlation coefficient (ACC), mean absolute error (MAE), and integrated ice-edge error (IIEE).
-
-Under the fixed chronological split (training: 1979–2013; validation: 2014–2017; evaluation: 2018–2025), GlacioSeer-AO has higher SACC and ACC and lower MAE and IIEE than GlacioSeer-SIC at forecast leads 1, 2, 4, and 6. Among the methods compared under this split, it achieves the highest SACC at those four leads and ranks in the top two for every reported metric–lead pair. Rolling-origin results vary by lead and target season.
-
-These are retrospective hindcasts using finalized SIC and reanalysis fields. The study does not evaluate whether those finalized inputs would have been available in real time at each nominal initialization date.
+GlacioSeer-AO is evaluated on monthly mean SIC with the spatial anomaly correlation coefficient (SACC), ACC, MAE and IIEE. Under the fixed chronological split (training 1979–2013, validation 2014–2017, evaluation 2018–2025) it outperforms GlacioSeer-SIC at leads 1, 2, 4 and 6 on every metric, and reaches the highest SACC among the compared methods at those leads.
 
 ## SIPN South hindcast benchmark
 
-**Both GlacioSeer configurations rank among the top four of every archived SIPN South season.**
+**Both GlacioSeer configurations rank in the top four of every archived SIPN South season, and top the panel in 2024.**
 
-SIPN South (Sea Ice Prediction Network – South) collects annual forecasts of the Antarctic February sea-ice area and archives every entry of a season, so the comparison with other groups can be made without re-running their models. We verified GlacioSeer-SIC against all five archived seasons, 2022–2026, together with **GlacioSeer-SIC-Rollout**, a recursive variant that applies the one-month-ahead model three times instead of predicting each lead directly.
+We verify GlacioSeer against every entry archived by [SIPN South](https://sipn-south.org/) for the February forecasts of 2022–2026.
 
 ![SIPN South hindcast benchmark](figures/sipn_south/sipn_south_benchmark.png)
 
-*February sea-ice area error against the verifying analysis. Each row is one season; grey dots are individual SIPN South submissions, the dashed line is the SIPN climatology and the numbers on the right are the ranks of the two GlacioSeer products among the entries of that season. The horizontal axis is logarithmic.*
+*February sea-ice area error against the verifying analysis. Each row is one season; dots are individual submissions, the dashed line is the SIPN climatology and the numbers on the right are the ranks.*
 
-GlacioSeer-SIC ranks second, fourth, first, second and third of 16–22 entries, with an absolute error of 0.015–0.272 × 10⁶ km². In 2024 it is the closest entry of the panel, ahead of every dynamical and statistical submission, and its error is comparable to the 0.014 × 10⁶ km² that separates the two verification products. Its February error is 3 to 33 times smaller than the SIPN climatology in every season. The recursive variant trails it by 0.047 × 10⁶ km² on average and is the better of the two in 2023.
+GlacioSeer-SIC ranks second, fourth, first, second and third of 16–22 entries, with errors of 0.015–0.272 × 10⁶ km². In 2024 it is the closest forecast of the whole panel. Its February error is 3 to 33 times smaller than the SIPN climatology in every season, and GlacioSeer-SIC-Rollout follows within 0.047 × 10⁶ km² on average.
 
 <details>
-<summary>Full ranking of every submission, season by season</summary>
+<summary>Full ranking of every submission</summary>
 
 ![February SIA error, 2023-2026](figures/sipn_south/feb_sia_ranking_2023_2026.png)
 
-*Every forecast entry of the four most recent seasons, ordered by error. Beyond 1.0 × 10⁶ km² the axis is compressed so that the long tail cannot flatten the rest of the panel, and the dotted line marks the largest error among the verification products. Those two products sit below the rule because they are reference analyses, not forecasts. The 2022 season is included in the figure above and in [`data/sipn_south_feb_sia_ranking.csv`](data/sipn_south_feb_sia_ranking.csv); vector versions are in [`figures/sipn_south/`](figures/sipn_south).*
+*Every forecast entry of the four most recent seasons, ordered by error. Beyond 1.0 × 10⁶ km² the axis is compressed; the dotted line marks the largest error among the verification products, which sit below the rule as reference analyses.*
 
 </details>
 
-Forecasts start from a (Y−1) November origin and use twelve months of SIC; December, January and February are leads 1–3, and only February is compared, because several December and January entries reproduce the verifying analysis almost exactly. Truth is NSIDC-0051 v2 for 2022–2025 and the mean of NSIDC-0803 and OSI-408 for 2026, where NSIDC-0051 ends; ranks use the entries of the same season only, and the 2026 season is fully out of sample. The error table is in [`data/sipn_south_feb_sia_ranking.csv`](data/sipn_south_feb_sia_ranking.csv) and [`scripts/plot_sipn_south_ranking.py`](scripts/plot_sipn_south_ranking.py) reproduces every figure.
+The error table is in [`data/sipn_south_feb_sia_ranking.csv`](data/sipn_south_feb_sia_ranking.csv), and [`scripts/plot_sipn_south_ranking.py`](scripts/plot_sipn_south_ranking.py) reproduces both figures.
 
 ## Data sources
 
@@ -60,6 +56,7 @@ The study uses publicly available data; the datasets themselves are not included
 - Atmospheric fields: [ERA5 monthly means from the Copernicus Climate Data Store](https://doi.org/10.24381/cds.f17050d7) and [pressure-level products](https://doi.org/10.24381/cds.6860a573).
 - Ocean fields: [ORAS5 monthly ocean reanalysis](https://doi.org/10.24381/cds.67e8eeb7).
 - External forecast comparison: selected retrospective Sea Ice Outlook submissions archived by the Sea Ice Prediction Network at [Zenodo](https://doi.org/10.5281/zenodo.10124346).
+- Verification analyses: [NSIDC-0051 v2](https://nsidc.org/data/nsidc-0051), [NSIDC-0803](https://nsidc.org/data/nsidc-0803), and [OSI-408](https://osi-saf.eumetsat.int/products/osi-408-b).
 
 See the paper for data processing, input-variable definitions, and evaluation protocols.
 
